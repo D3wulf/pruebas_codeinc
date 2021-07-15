@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content='1037253388562-rb8e9nhniinjk43r2o2vg0dl6fq3ofkk.apps.googleusercontent.com'>
+    <!-- mi usuario google no funciona -->
+    <!-- 1037253388562-rb8e9nhniinjk43r2o2vg0dl6fq3ofkk.apps.googleusercontent.com -->
+    <!-- usuario fernando -->
+    <!-- 1045072534136-oqkjcjvo449uls0bttgvl3aejelh22f5.apps.googleusercontent.com -->
+    <title>SIgn In</title>
+</head>
+
+<body>
+    <h1>google sign in</h1>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div><br>
+
+
+
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <a href="#" onclick="signOut();">Sign out</a><br>
+
+
+
+
+
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+            let id_token = googleUser.getAuthResponse().id_token;
+            console.log(id_token);
+
+
+        }
+
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function() {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+</body>
+
+</html>
